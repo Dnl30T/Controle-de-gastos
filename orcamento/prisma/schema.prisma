@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model expense {
+  id          String   @id @default(uuid())
+  category    String
+  date        DateTime
+  description String
+  value       Decimal
+}
+
+model budget {
+  id             Int     @id @default(autoincrement())
+  salary         Decimal
+  fixed_expenses Decimal
+  transport      Decimal
+  investment     Decimal
+  leisure        Decimal
+  food           Decimal
+  variety        Decimal
+  savings        Decimal
+}
